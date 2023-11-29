@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -92,7 +92,7 @@ namespace WebApplication6.Controllers
 
                     await conectar.OpenAsync();
 
-                    string sentencia = "SELECT * FROM Paciente WHERE id = ?";
+                    string sentencia = "SELECT * FROM Paciente WHERE idPaciente = ?";
 
                     Pacientes Paciente = new Pacientes();
 
@@ -151,7 +151,7 @@ namespace WebApplication6.Controllers
 
                     await conectar.OpenAsync();
 
-                    string sentencia = "INSERT INTO medico (id,NombrePac,ApellidoPac, RunPac, Nacionalidad, Visa, Genero,SintomasPac,ocho, Medico_idMedico ) VALUES (@id, @NombrePac, @ApellidoPac, @RunPac, @Nacionalidad, @Visa, @Genero, @SintomasPac,@ocho, @Medico_idMedico)";
+                    string sentencia = "INSERT INTO Peciente (id,NombrePac,ApellidoPac, RunPac, Nacionalidad, Visa, Genero,SintomasPac,ocho, Medico_idMedico ) VALUES (@id, @NombrePac, @ApellidoPac, @RunPac, @Nacionalidad, @Visa, @Genero, @SintomasPac,@ocho, @Medico_idMedico)";
 
                     using (MySqlCommand comandos = new MySqlCommand(sentencia, conectar))
                     {
@@ -187,7 +187,7 @@ namespace WebApplication6.Controllers
 
 
         [HttpPut("{id}")]
-        //hacemos el metodo put para poder modifcar los datos de un medico 
+        //hacemos el metodo put para poder modifcar los datos de un Paciente 
         public async Task<IActionResult> EditarMedico(int id, [FromBody] Pacientes paciente)
         {
 
@@ -200,7 +200,7 @@ namespace WebApplication6.Controllers
 
                     await conectar.OpenAsync();
 
-                    string sentencia = "UPDATE Paciente SET NombrePac = @NombrePac , ApellidoPac = @ApellidoPac, RunPac = @RunPac, Nacionalidad = @Nacionalidad , Visa = @Visa, Genero = @Genero, SintomasPac = @SintomasPac, ocho = @ocho,Medico_idMedico = @Medico_idMedico  WHERE id = @id";
+                    string sentencia = "UPDATE Paciente SET NombrePac = @NombrePac , ApellidoPac = @ApellidoPac, RunPac = @RunPac, Nacionalidad = @Nacionalidad , Visa = @Visa, Genero = @Genero, SintomasPac = @SintomasPac, ocho = @ocho,Medico_idMedico = @Medico_idMedico  WHERE idPaciente = @id";
 
                     using (MySqlCommand comandos = new MySqlCommand(sentencia, conectar))
                     {
@@ -234,7 +234,7 @@ namespace WebApplication6.Controllers
 
         }
 
-        // Metodo delete para poder borrar el medico mediande buscarlo por la id
+        // Metodo delete para poder borrar el Paciente mediande buscarlo por la id
         [HttpDelete("{id}")]
         public async Task<IActionResult> EliminarPaciente(int id)
         {
@@ -247,7 +247,7 @@ namespace WebApplication6.Controllers
 
                     await conectar.OpenAsync();
 
-                    string sentencia = "DELETE FROM Paciente WHERE id = @id";
+                    string sentencia = "DELETE FROM Paciente WHERE idPaciente = @id";
 
                     using (MySqlCommand comandos = new MySqlCommand(sentencia, conectar))
                     {
