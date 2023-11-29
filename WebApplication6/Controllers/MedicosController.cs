@@ -21,7 +21,7 @@ namespace WebApplication6.Controllers
         
 
         [HttpGet]
-        //hacemos el httpget para que nos muestre todos los camioneros que estan en la lista
+        //hacemos el httpget para que nos muestre todos los Medico que estan en la lista
         public async Task<IActionResult> ListarMedicos()
         {
             try
